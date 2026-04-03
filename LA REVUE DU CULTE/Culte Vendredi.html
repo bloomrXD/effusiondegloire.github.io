@@ -1,0 +1,1454 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Culte Vendredi</title>
+<style>
+@font-face {
+  font-family: 'Clash Display';
+  font-style: normal;
+  font-weight: 200;
+  font-display: swap;
+  src: url('fonts/Clash Display/ClashDisplay-Extralight.woff2') format('woff2'),
+       url('fonts/Clash Display/ClashDisplay-Extralight.woff') format('woff');
+}
+@font-face {
+  font-family: 'Clash Display';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('fonts/Clash Display/ClashDisplay-Light.woff2') format('woff2'),
+       url('fonts/Clash Display/ClashDisplay-Light.woff') format('woff');
+}
+@font-face {
+  font-family: 'Clash Display';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('fonts/Clash Display/ClashDisplay-Regular.woff2') format('woff2'),
+       url('fonts/Clash Display/ClashDisplay-Regular.woff') format('woff');
+}
+@font-face {
+  font-family: 'Clash Display';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('fonts/Clash Display/ClashDisplay-Medium.woff2') format('woff2'),
+       url('fonts/Clash Display/ClashDisplay-Medium.woff') format('woff');
+}
+@font-face {
+  font-family: 'Clash Display';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('fonts/Clash Display/ClashDisplay-Semibold.woff2') format('woff2'),
+       url('fonts/Clash Display/ClashDisplay-Semibold.woff') format('woff');
+}
+@font-face {
+  font-family: 'Clash Display';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('fonts/Clash Display/ClashDisplay-Bold.woff2') format('woff2'),
+       url('fonts/Clash Display/ClashDisplay-Bold.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Delight';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('fonts/Delight/delight-light.woff2') format('woff2'),
+       url('fonts/Delight/delight-light.woff') format('woff');
+}
+@font-face {
+  font-family: 'Delight';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('fonts/Delight/delight-regular.woff2') format('woff2'),
+       url('fonts/Delight/delight-regular.woff') format('woff');
+}
+@font-face {
+  font-family: 'Delight';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('fonts/Delight/delight-medium.woff2') format('woff2'),
+       url('fonts/Delight/delight-medium.woff') format('woff');
+}
+@font-face {
+  font-family: 'Delight';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('fonts/Delight/delight-semibold.woff2') format('woff2'),
+       url('fonts/Delight/delight-semibold.woff') format('woff');
+}
+@font-face {
+  font-family: 'Delight';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('fonts/Delight/delight-bold.woff2') format('woff2'),
+       url('fonts/Delight/delight-bold.woff') format('woff');
+}
+@font-face {
+  font-family: 'Delight';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url('fonts/Delight/delight-black.woff2') format('woff2'),
+       url('fonts/Delight/delight-black.woff') format('woff');
+}
+
+/* ============================================================
+   CONTENU — Modifiez uniquement ce bloc pour chaque culte
+   ============================================================ */
+
+/* ============================================================
+   VARIABLES & RESET
+   ============================================================ */
+:root {
+  --creme:     #F7F3EC;
+  --creme-2:   #EEE7D9;
+  --or:        #C4973A;
+  --or-pale:   #E8C97A;
+  --bordeaux:  #832919;/*à modifier*/
+  --bordeaux-2:#4d0414;/*à modifier*/
+  --brun:      #4b2e1b;/*à modifier*/
+  --brun-pale: #7A5C46;
+  --texte:     #2A1F18;
+  --texte-2:   #5C4535;
+  --blanc:     #FFFFFF;
+  --ombre:     rgba(61,43,31,0.12);
+
+  --font-titre: 'Clash Display', serif;
+  --font-corps: 'Delight', sans-serif;
+
+  --radius: 16px;
+  --radius-sm: 8px;
+  --transition: 1s cubic-bezier(0.4,0,0.2,1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  background: var(--creme);
+  color: var(--texte);
+  font-family: var(--font-corps);
+  line-height: 1.7;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ============================================================
+   HERO HEADER
+   ============================================================ */
+.hero {
+  background: linear-gradient(160deg, var(--bordeaux) 0%, var(--brun) 100%);
+  color: var(--creme);
+  padding: 3rem 1.5rem 4rem;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 20% 80%, rgba(196,151,58,0.18) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(196,151,58,0.12) 0%, transparent 40%);
+  pointer-events: none;
+}
+
+.hero-cross {
+  width: 44px;
+  height: 44px;
+  margin: 0 auto 1.25rem;
+  opacity: 0.85;
+}
+
+.hero-eyebrow {
+  font-family: var(--font-corps);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--or-pale);
+  margin-bottom: 0.75rem;
+}
+
+.hero h1 {
+  font-family: var(--font-titre);
+  font-size: clamp(2rem, 7vw, 3rem);
+  font-weight: 500;
+  line-height: 1.15;
+  color: var(--blanc);
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.hero-meta {
+  font-size: 0.82rem;
+  color: rgba(247,243,236,0.7);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.hero-meta span {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.hero-divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--or), transparent);
+  margin: 0 auto;
+}
+
+/* ============================================================
+   NAV TABS
+   ============================================================ */
+.nav-tabs {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--brun);
+  display: flex;
+  justify-content: center;
+  padding: 0 1rem;
+  gap: 0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.nav-tabs::-webkit-scrollbar { display: none; }
+
+.nav-tab {
+  flex-shrink: 0;
+  padding: 0.9rem 1.25rem;
+  font-family: var(--font-corps);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(247,243,236,0.55);
+  background: transparent;
+  border: none;
+  border-bottom: 2.5px solid transparent;
+  cursor: pointer;
+  transition: var(--transition);
+  white-space: nowrap;
+}
+
+.nav-tab.active {
+  color: var(--or-pale);
+  border-bottom-color: var(--or);
+}
+
+/* ============================================================
+   MAIN CONTAINER
+   ============================================================ */
+.container {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.section-page {
+  display: none;
+  padding-top: 1.75rem;
+  padding-bottom: 4rem;
+  animation: fadeUp 0.4s ease forwards;
+}
+.section-page.active { display: block; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(52px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================================
+   CARDS & SECTIONS
+   ============================================================ */
+.card {
+  background: var(--blanc);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 16px var(--ombre);
+}
+
+.card-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--or);
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.card-label::before {
+  content: '';
+  display: inline-block;
+  width: 18px;
+  height: 2px;
+  background: var(--or);
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   RÉSUMÉ — SECTIONS DÉPLIABLES
+   ============================================================ */
+.accordion {
+  border: 1px solid var(--creme-2);
+  border-radius: var(--radius-sm);
+  margin-bottom: 0.6rem;
+  overflow: hidden;
+}
+
+.accordion-btn {
+  width: 100%;
+  padding: 1rem 1.25rem;
+  background: var(--creme);
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  font-family: var(--font-titre);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--brun);
+  transition: background var(--transition);
+}
+
+.accordion-btn:hover { background: var(--creme-2); }
+
+.accordion-icon {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--bordeaux);
+  color: var(--blanc);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  transition: transform var(--transition), background var(--transition);
+}
+
+.accordion.open .accordion-icon {
+  transform: rotate(45deg);
+  background: var(--or);
+}
+
+.accordion-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1);
+}
+
+.accordion.open .accordion-body { max-height: 800px; }
+
+.accordion-content {
+  padding: 1rem 1.25rem 1.25rem;
+  font-size: 0.93rem;
+  color: var(--texte-2);
+  line-height: 1.8;
+  border-top: 1px solid var(--creme-2);
+}
+
+/* ============================================================
+   VERSETS
+   ============================================================ */
+.verset-card {
+  background: linear-gradient(135deg, var(--bordeaux) 0%, var(--bordeaux-2) 100%);
+  border-radius: var(--radius-sm);
+  padding: 1.25rem 1.25rem 1.25rem 1.5rem;
+  margin-bottom: 0.75rem;
+  border-left: 4px solid var(--or);
+  position: relative;
+  overflow: hidden;
+}
+
+.verset-card::before {
+  content: '\201C';
+  position: absolute;
+  top: -0.5rem;
+  right: 0.75rem;
+  font-family: var(--font-titre);
+  font-size: 5rem;
+  color: rgba(196,151,58,0.15);
+  line-height: 1;
+  pointer-events: none;
+}
+
+.verset-ref {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--or-pale);
+  margin-bottom: 0.5rem;
+}
+
+.verset-texte {
+  font-family: var(--font-titre);
+  font-size: 1.05rem;
+  font-style: italic;
+  color: var(--creme);
+  line-height: 1.65;
+}
+
+/* ============================================================
+   ILLUSTRATIONS / TEMPS FORTS
+   ============================================================ */
+.temps-fort {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--creme-2);
+  align-items: flex-start;
+}
+.temps-fort:last-child { border-bottom: none; padding-bottom: 0; }
+
+.temps-fort-num {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--brun);
+  color: var(--or-pale);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-titre);
+  font-size: 1rem;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.temps-fort-titre {
+  font-family: var(--font-titre);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--brun);
+  margin-bottom: 0.25rem;
+}
+
+.temps-fort-desc {
+  font-size: 0.87rem;
+  color: var(--texte-2);
+  line-height: 1.65;
+}
+
+/* ============================================================
+   STATS BANNER
+   ============================================================ */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.stat-box {
+  background: var(--blanc);
+  border-radius: var(--radius-sm);
+  padding: 1rem 0.75rem;
+  text-align: center;
+  box-shadow: 0 2px 10px var(--ombre);
+}
+
+.stat-num {
+  font-family: var(--font-titre);
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--bordeaux);
+  line-height: 1;
+  margin-bottom: 0.25rem;
+}
+
+.stat-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--brun-pale);
+}
+
+/* ============================================================
+   QUIZ
+   ============================================================ */
+.quiz-intro {
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.quiz-intro-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.quiz-intro h2 {
+  font-family: var(--font-titre);
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--brun);
+  margin-bottom: 0.5rem;
+}
+
+.quiz-intro p {
+  font-size: 0.9rem;
+  color: var(--texte-2);
+  margin-bottom: 1.5rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 2rem;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-corps);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: var(--transition);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--bordeaux), var(--bordeaux-2));
+  color: var(--blanc);
+  box-shadow: 0 4px 16px rgba(107,30,46,0.35);
+}
+
+.btn-primary:hover, .btn-primary:active {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 22px rgba(107,30,46,0.45);
+}
+
+.btn-secondary {
+  background: var(--creme-2);
+  color: var(--brun);
+}
+
+.btn-or {
+  background: linear-gradient(135deg, var(--or), var(--or-pale));
+  color: var(--brun);
+  box-shadow: 0 4px 16px rgba(196,151,58,0.35);
+}
+
+/* Progression */
+.quiz-progress {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.progress-bar-wrap {
+  flex: 1;
+  height: 6px;
+  background: var(--creme-2);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--bordeaux), var(--or));
+  border-radius: 3px;
+  transition: width 0.4s ease;
+}
+
+.progress-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--brun-pale);
+  white-space: nowrap;
+}
+
+/* Question */
+.question-card {
+  background: var(--blanc);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 16px var(--ombre);
+}
+
+.question-num {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--or);
+  margin-bottom: 0.6rem;
+}
+
+.question-text {
+  font-family: var(--font-titre);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--brun);
+  line-height: 1.4;
+  margin-bottom: 1.25rem;
+}
+
+.choices { display: flex; flex-direction: column; gap: 0.5rem; }
+
+.choice-btn {
+  width: 100%;
+  padding: 0.9rem 1.1rem;
+  background: var(--creme);
+  border: 1.5px solid var(--creme-2);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  text-align: left;
+  font-family: var(--font-corps);
+  font-size: 0.9rem;
+  color: var(--texte);
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.choice-btn:hover:not(:disabled) {
+  background: var(--creme-2);
+  border-color: var(--or);
+}
+
+.choice-letter {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--creme-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--brun-pale);
+  flex-shrink: 0;
+  transition: var(--transition);
+}
+
+.choice-btn.correct {
+  background: #EAF6ED;
+  border-color: #2E8B57;
+  color: #1a5c36;
+}
+.choice-btn.correct .choice-letter {
+  background: #2E8B57;
+  color: white;
+}
+
+.choice-btn.wrong {
+  background: #FDECEA;
+  border-color: #C0392B;
+  color: #7B241C;
+}
+.choice-btn.wrong .choice-letter {
+  background: #C0392B;
+  color: white;
+}
+
+.choice-btn:disabled { cursor: default; }
+
+.feedback-box {
+  padding: 0.85rem 1.1rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.87rem;
+  line-height: 1.6;
+  margin-top: 0.75rem;
+  display: none;
+}
+.feedback-box.show { display: block; }
+.feedback-box.correct-fb { background: #EAF6ED; color: #1a5c36; border-left: 3px solid #2E8B57; }
+.feedback-box.wrong-fb   { background: #FDECEA; color: #7B241C; border-left: 3px solid #C0392B; }
+
+.quiz-nav {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1rem;
+}
+
+/* Résultats */
+.result-card {
+  background: var(--blanc);
+  border-radius: var(--radius);
+  padding: 2rem 1.5rem;
+  text-align: center;
+  box-shadow: 0 2px 24px var(--ombre);
+  margin-bottom: 1rem;
+}
+
+.score-circle {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--bordeaux), var(--bordeaux-2));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.25rem;
+  box-shadow: 0 6px 24px rgba(107,30,46,0.3);
+}
+
+.score-num {
+  font-family: var(--font-titre);
+  font-size: 2.25rem;
+  font-weight: 600;
+  color: var(--blanc);
+  line-height: 1;
+}
+
+.score-denom {
+  font-size: 0.75rem;
+  color: rgba(247,243,236,0.7);
+  font-weight: 400;
+}
+
+.result-title {
+  font-family: var(--font-titre);
+  font-size: 1.65rem;
+  font-weight: 600;
+  color: var(--brun);
+  margin-bottom: 0.5rem;
+}
+
+.result-msg {
+  font-size: 0.9rem;
+  color: var(--texte-2);
+  margin-bottom: 1.5rem;
+  line-height: 1.7;
+}
+
+.result-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 1.5rem;
+}
+
+.result-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 0.9rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+}
+
+.result-item.ok   { background: #EAF6ED; color: #1a5c36; }
+.result-item.fail { background: #FDECEA; color: #7B241C; }
+
+.result-item-q { text-align: left; flex: 1; }
+.result-item-badge {
+  font-weight: 700;
+  font-size: 0.75rem;
+  flex-shrink: 0;
+  margin-left: 0.5rem;
+}
+
+/* ============================================================
+   À PROPOS
+   ============================================================ */
+.about-pastor {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  margin-bottom: 1.25rem;
+}
+
+.pastor-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--bordeaux), var(--brun));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-titre);
+  font-size: 1.5rem;
+  color: var(--or-pale);
+  flex-shrink: 0;
+  font-weight: 600;
+}
+
+.pastor-name {
+  font-family: var(--font-titre);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--brun);
+}
+
+.pastor-role {
+  font-size: 0.8rem;
+  color: var(--brun-pale);
+}
+
+.pastor-description {
+  font-size: 0.9rem;
+  color: var(--texte-2);
+  line-height: 1.75;
+  margin-top: 0.35rem;
+}
+
+.pastor-affirmation {
+  font-size: 0.9rem;
+  color: var(--brun);
+  font-weight: 600;
+  line-height: 1.6;
+  margin-top: 0.35rem;
+}
+
+.pastor-role {
+  font-size: 0.8rem;
+  color: var(--brun-pale);
+}
+
+.verse-du-jour {
+  background: linear-gradient(135deg, var(--brun) 0%, var(--bordeaux) 100%);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  text-align: center;
+  color: var(--creme);
+  margin-bottom: 1rem;
+}
+
+.verse-du-jour blockquote {
+  font-family: var(--font-titre);
+  font-size: 1.1rem;
+  font-style: italic;
+  line-height: 1.7;
+  color: var(--creme);
+  margin-bottom: 0.5rem;
+}
+
+.verse-du-jour cite {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--or-pale);
+}
+
+/* ============================================================
+   COMMENT MODIFIER — Guide pasteur
+   ============================================================ */
+.guide-step {
+  display: flex;
+  gap: 1rem;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--creme-2);
+  align-items: flex-start;
+}
+.guide-step:last-child { border-bottom: none; }
+
+.guide-num {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--or);
+  color: var(--brun);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.guide-text { font-size: 0.88rem; color: var(--texte-2); line-height: 1.65; }
+.guide-text strong { color: var(--brun); font-weight: 700; }
+code {
+  background: var(--creme-2);
+  padding: 0.1em 0.45em;
+  border-radius: 4px;
+  font-size: 0.82em;
+  color: var(--bordeaux);
+  font-family: 'Courier New', monospace;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer {
+  background: var(--brun);
+  color: rgba(247,243,236,0.55);
+  text-align: center;
+  padding: 1.5rem;
+  font-size: 0.75rem;
+  margin-top: 2rem;
+}
+
+footer strong { color: var(--or-pale); }
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     ✏️  ZONE DE CONTENU — MODIFIEZ ICI POUR CHAQUE CULTE
+     ============================================================ -->
+<script>
+const CULTE_DATA = {
+  // ── Informations générales ──────────────────────────────────
+  titre:   "La foi qui déplace les montagnes",
+  date:    "22 mars 2025",
+  pasteur: "Pasteur Daniel KOUASSI",
+  initiales: "DK",
+  theme:   "Foi & Confiance",
+  duree:   "1h 27 min",
+  nb_refs: 8,
+  nb_points_cles: 3,
+  <!-- ORATEURS INVITES -->
+  host1: {
+    name: "Pasteur Maxime BEUGRE",
+    initiales: "MG",
+    role: "Orateur Invité — Assemblée Effusion de Gloire",
+    description: "Intervenant invité sur le thème de la foi active.",
+    texteAffirme: "La foi en action transforme votre réalité spirituelle."
+  },
+  host2: {
+    name: "Pasteur DADE Venance",
+    initiales: "DV",
+    role: "Orateur Invité — Assemblée Espoir et Louange",
+    description: "Enseignant sur la prière et la résilience.",
+    texteAffirme: "La prière persévérante ouvre les portes du ciel."
+  },
+
+
+  // ── Verset du jour (affiché en page "À propos") ─────────────
+  verset_jour: {
+    ref:   "Matthieu 17:20",
+    texte: "Si vous aviez de la foi comme un grain de moutarde, vous diriez à cette montagne : Déplace-toi, et elle se déplacerait."
+  },
+
+  // ── Sections du résumé (dépliables) ─────────────────────────
+  sections: [
+    {
+      titre: "Introduction — Qu'est-ce que la foi ?",
+      contenu: "Le pasteur a ouvert le message en posant une question fondamentale : peut-on avoir la foi sans la vivre concrètement ? À travers une série de définitions bibliques et pratiques, il a montré que la foi n'est pas une simple croyance intellectuelle ou émotionnelle, mais une confiance radicale et active en la personne de Dieu. La foi qui plaît à Dieu est celle qui agit même quand elle ne voit pas encore l'accomplissement de la promesse."
+    },
+    {
+      titre: "Point 1 — La foi comme acte, non comme sentiment",
+      contenu: "S'appuyant sur l'exemple d'Abraham quittant son pays sans connaître sa destination (Genèse 12), le pasteur a montré que la foi authentique implique une obéissance concrète et risquée. Abraham n'a pas attendu de tout comprendre pour partir — il a agi sur la seule base de la parole de Dieu. De même, chaque croyant est appelé à faire des pas de foi là où la logique humaine dit de s'arrêter."
+    },
+    {
+      titre: "Point 2 — La foi intercède pour les autres",
+      contenu: "Par l'histoire du paralytique descendu par le toit par ses amis (Marc 2), le pasteur a illustré la dimension communautaire et intercessive de la foi. Ces hommes ne se sont pas arrêtés aux obstacles (la foule, le toit), mais ont trouvé un moyen créatif d'apporter leur ami devant Jésus. Jésus a vu *leur* foi — celle des porteurs — et a guéri le paralytique. Nos actes de foi peuvent toucher et libérer ceux qui nous entourent."
+    },
+    {
+      titre: "Point 3 — La foi audacieuse face à l'impossible",
+      contenu: "La femme hémorragique (Luc 8) illustre ce qu'est une foi qui s'accroche malgré tout : douze ans de maladie, d'exclusion sociale, de tentatives échouées. Pourtant, elle se dit en elle-même que si seulement elle peut toucher le vêtement de Jésus, elle sera guérie. Cette foi personnelle, intime et obstinée est récompensée immédiatement. Jésus s'arrête, la reconnaît, et la renvoie en paix."
+    },
+    {
+      titre: "Application & Exhortation finale",
+      contenu: "Le pasteur a terminé en invitant l'assemblée à identifier une 'montagne' dans sa vie — une situation qui semble impossible, immovable — et de la nommer devant Dieu avec foi. Il a rappelé que la foi ne naît pas du néant mais s'alimente par la Parole (Romains 10:17), la prière, et la communion fraternelle. Trois engagements pratiques ont été proposés : lire un passage biblique chaque matin, prier en couple ou en famille, et partager un témoignage de foi avec un frère ou une sœur cette semaine."
+    }
+  ],
+
+  // ── Versets à l'appui ────────────────────────────────────────
+  versets: [
+    {
+      ref:   "Matthieu 17:20",
+      texte: "Si vous aviez de la foi comme un grain de moutarde, vous diriez à cette montagne : Déplace-toi d'ici là, et elle se déplacerait ; rien ne vous serait impossible."
+    },
+    {
+      ref:   "Hébreux 11:1",
+      texte: "Or la foi, c'est la substance des choses qu'on espère, la démonstration de celles qu'on ne voit pas."
+    },
+    {
+      ref:   "Jacques 2:17",
+      texte: "Ainsi la foi, si elle n'a pas les œuvres, est morte en elle-même."
+    },
+    {
+      ref:   "Romains 10:17",
+      texte: "Ainsi la foi vient de ce qu'on entend, et ce qu'on entend vient de la parole de Christ."
+    }
+  ],
+
+  // ── Temps forts / Illustrations ─────────────────────────────
+  temps_forts: [
+    {
+      titre: "Abraham : la foi qui part sans carte",
+      desc:  "Quand Dieu dit « pars », Abraham obéit sans connaître la destination. Image forte d'une foi qui fait confiance avant même de comprendre le plan."
+    },
+    {
+      titre: "Le paralytique et ses amis porteurs",
+      desc:  "Quatre hommes brisent un toit pour amener leur ami à Jésus. La foi collective peut ouvrir des portes là où l'individu seul bute contre des murs."
+    },
+    {
+      titre: "La femme hémorragique : toucher le bord",
+      desc:  "Douze ans de souffrance. Une décision : tendre la main. Foi audacieuse, discrète, personnelle — et pourtant remarquée et honorée par Jésus."
+    }
+  ],
+
+// ── Quiz de compréhension ────────────────────────────────────
+  quiz: [
+    {
+      question: "Quelle image le pasteur a-t-il utilisée pour définir la taille minimale de la foi ?",
+      choix: ["Un grain de blé", "Un grain de moutarde", "Une graine de sésame", "Un caillou"],
+      bonne: 1,
+      explication: "Jésus lui-même utilise l'image du grain de moutarde dans Matthieu 17:20 pour illustrer qu'une foi même minuscule peut accomplir des choses extraordinaires."
+    },
+    {
+      question: "Selon Hébreux 11:1, la foi est la substance de quoi ?",
+      choix: ["Des prières qu'on murmure", "Des miracles qu'on a vus", "Des choses qu'on espère", "Des péchés pardonnés"],
+      bonne: 2,
+      explication: "Hébreux 11:1 dit : « la foi, c'est la substance des choses qu'on espère, la démonstration de celles qu'on ne voit pas. »"
+    },
+    {
+      question: "Quel personnage biblique a quitté son pays sans connaître sa destination par foi ?",
+      choix: ["Moïse, le guide du peuple d'Israël", "David, le roi oint", "Abraham, le patriarche de la foi", "Joseph, le rêveur"],
+      bonne: 2,
+      explication: "Abraham a obéi à l'appel de Dieu en quittant son pays (Genèse 12) sans connaître la destination finale — symbole de la foi obéissante."
+    },
+    {
+      question: "Pourquoi Jésus a-t-il guéri le paralytique de Marc 2 ?",
+      choix: ["À cause de la foi du paralytique lui-même", "À cause de la foi de ses amis qui le portaient", "Parce que c'était le sabbat", "Parce que le paralytique avait prié"],
+      bonne: 1,
+      explication: "Le texte dit que Jésus « vit leur foi » — celle des amis qui avaient brisé le toit. La foi intercessive des autres peut débloquer notre situation."
+    },
+    {
+      question: "Selon Romains 10:17, comment la foi naît-elle ?",
+      choix: ["Par les jeûnes et les prières que l'on fait", "Par l'écoute de la Parole de Christ", "Par les signes et les miracles que l'on voit dans la vie des autres", "Par la volonté personnelle"],
+      bonne: 1,
+      explication: "« La foi vient de ce qu'on entend, et ce qu'on entend vient de la parole de Christ » (Romains 10:17). La foi est nourrie par la Parole."
+    }
+  ]
+};
+</script>
+
+<!-- ============================================================
+     STRUCTURE HTML
+     ============================================================ -->
+
+<!-- HERO -->
+<header class="hero">
+  <svg class="hero-cross" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="18" y="4" width="8" height="36" rx="2" fill="rgba(196,151,58,0.85)"/>
+    <rect x="6" y="14" width="32" height="8" rx="2" fill="rgba(196,151,58,0.85)"/>
+  </svg>
+  <p class="hero-eyebrow">Tempête de Prière</p>
+  <h1 id="hero-titre"></h1>
+  <div class="hero-meta">
+    <span>📅 <span id="hero-date"></span></span>
+    <span>🎙 <span id="hero-pasteur"></span></span>
+    <span>🏷 <span id="hero-theme"></span></span>
+  </div>
+  <div class="hero-divider"></div>
+</header>
+
+<!-- NAV -->
+<nav class="nav-tabs" role="tablist">
+  <button class="nav-tab active" onclick="showPage('resume')">Résumé</button>
+  <button class="nav-tab" onclick="showPage('versets')">Versets</button>
+  <button class="nav-tab" onclick="showPage('forts')">Temps forts</button>
+  <button class="nav-tab" onclick="showPage('quiz')">Quiz</button>
+  <button class="nav-tab" onclick="showPage('apropos')">À propos</button>
+</nav>
+
+<main>
+
+<!-- ============ PAGE : RÉSUMÉ ============ -->
+<div id="page-resume" class="section-page active">
+  <div class="container">
+    <div class="stats-row" id="stats-row"></div>
+    <div class="card">
+      <div class="card-label">Résumé du message</div>
+      <div id="accordion-list"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PAGE : VERSETS ============ -->
+<div id="page-versets" class="section-page">
+  <div class="container">
+    <div class="card">
+      <div class="card-label">Versets à l'appui</div>
+      <div id="versets-list"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PAGE : TEMPS FORTS ============ -->
+<div id="page-forts" class="section-page">
+  <div class="container">
+    <div class="card">
+      <div class="card-label">Illustrations & Temps forts</div>
+      <div id="forts-list"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PAGE : QUIZ ============ -->
+<div id="page-quiz" class="section-page">
+  <div class="container" id="quiz-container"></div>
+</div>
+
+<!-- ============ PAGE : À PROPOS ============ -->
+<div id="page-apropos" class="section-page">
+  <div class="container">
+
+    <div class="verse-du-jour" id="verset-jour-block"></div>
+
+    <div class="card">
+      <div class="card-label">Votre pasteur</div>
+      <div class="about-pastor">
+        <div class="pastor-avatar" id="pastor-avatar-resident"></div>
+        <div>
+          <div class="pastor-name" id="pastor-name-resident"></div>
+          <div class="pastor-role">Pasteur Résident — Assemblée Effusion de Gloire</div>
+        </div>
+      </div>
+      <p class="pastor-description" id="pastor-resident-description">Mon Protocole personnel aidé du Département COMMUNICATION vous permet de revoir les messages dispensés durant les différents Cultes, même si vous n'étiez pas présent.e.s. Aussi, il y a un petit quiz vous aider à ancrer vos connaissances bibliques dans vos cœurs.</p>
+      <p class="pastor-affirmation" id="pastor-resident-affirmation">Êtes-vous prêt à vivre une foi qui déplace les montagnes ?</p>
+    </div>
+
+    <div class="card">
+      <div class="card-label">Pasteur Hôte 1</div>
+      <div class="about-pastor">
+        <div class="pastor-avatar" id="host1-avatar"></div>
+        <div>
+          <div class="pastor-name" id="host1-name"></div>
+          <div class="pastor-role" id="host1-role"></div>
+        </div>
+      </div>
+      <p class="pastor-description" id="host1-description"></p>
+      <p class="pastor-affirmation" id="host1-affirmation"></p>
+    </div>
+
+    <div class="card">
+      <div class="card-label">Pasteur Hôte 2</div>
+      <div class="about-pastor">
+        <div class="pastor-avatar" id="host2-avatar"></div>
+        <div>
+          <div class="pastor-name" id="host2-name"></div>
+          <div class="pastor-role" id="host2-role"></div>
+        </div>
+      </div>
+      <p class="pastor-description" id="host2-description"></p>
+      <p class="pastor-affirmation" id="host2-affirmation"></p>
+    </div>
+
+    <div class="card">
+      <div class="card-label">Guide — Comment mettre à jour ce site</div>
+      <div>
+        <div class="guide-step">
+          <div class="guide-num">1</div>
+          <div class="guide-text">Ouvrez le fichier <code>culte.html</code> avec un éditeur de texte (Notepad, TextEdit ou VS Code).</div>
+        </div>
+        <div class="guide-step">
+          <div class="guide-num">2</div>
+          <div class="guide-text">Trouvez le bloc <code>const CULTE_DATA = {</code> tout en haut — c'est la <strong>seule zone à modifier</strong>. Changez le titre, la date, les sections, versets et questions du quiz.</div>
+        </div>
+        <div class="guide-step">
+          <div class="guide-num">3</div>
+          <div class="guide-text">Sauvegardez le fichier, puis allez sur votre dépôt GitHub. Cliquez sur le fichier <code>culte.html</code>, puis sur le crayon (✏️ Edit), collez le nouveau contenu et cliquez <strong>Commit changes</strong>.</div>
+        </div>
+        <div class="guide-step">
+          <div class="guide-num">4</div>
+          <div class="guide-text">Votre site se met à jour automatiquement en <strong>1 à 2 minutes</strong>. L'URL reste la même — envoyez-la aux fidèles par WhatsApp ou email !</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="background:linear-gradient(135deg,var(--brun),var(--bordeaux));color:var(--creme);">
+      <div class="card-label" style="color:var(--or-pale);">Héberger sur GitHub Pages</div>
+      <div style="font-size:0.88rem;line-height:1.8;color:rgba(247,243,236,0.85);">
+        <p style="margin-bottom:0.75rem;"><strong style="color:var(--or-pale);">Étape 1 :</strong> Créez un compte sur <strong>github.com</strong> avec l'email de l'église.</p>
+        <p style="margin-bottom:0.75rem;"><strong style="color:var(--or-pale);">Étape 2 :</strong> Créez un nouveau dépôt (repository) public. Nommez-le exactement : <code style="background:rgba(0,0,0,0.25);color:var(--or-pale);">votre-pseudo.github.io</code></p>
+        <p style="margin-bottom:0.75rem;"><strong style="color:var(--or-pale);">Étape 3 :</strong> Uploadez le fichier <code style="background:rgba(0,0,0,0.25);color:var(--or-pale);">culte.html</code> en le renommant <code style="background:rgba(0,0,0,0.25);color:var(--or-pale);">index.html</code></p>
+        <p style="margin-bottom:0.75rem;"><strong style="color:var(--or-pale);">Étape 4 :</strong> Allez dans Settings → Pages → Source : <em>main branch</em> → Save.</p>
+        <p><strong style="color:var(--or-pale);">Résultat :</strong> Votre site est en ligne à l'adresse <em>votre-pseudo.github.io</em> — gratuitement et sans limite !</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</main>
+
+<footer>
+    La Revue du Culte ✝<br>
+    <strong>Église Vases d'Honneur _ Assemblée Effusion de Gloire</strong>
+</footer>
+
+<!-- ============================================================
+     JAVASCRIPT
+     ============================================================ -->
+<script>
+// ── Remplissage dynamique depuis CULTE_DATA ──────────────────
+
+document.getElementById('hero-titre').textContent   = CULTE_DATA.titre;
+document.getElementById('hero-date').textContent    = CULTE_DATA.date;
+document.getElementById('hero-pasteur').textContent = CULTE_DATA.pasteur;
+document.getElementById('hero-theme').textContent   = CULTE_DATA.theme;
+
+// Stats
+document.getElementById('stats-row').innerHTML = `
+  <div class="stat-box">
+    <div class="stat-num">${CULTE_DATA.nb_points_cles}</div>
+    <div class="stat-label">Points clés</div>
+  </div>
+  <div class="stat-box">
+    <div class="stat-num">${CULTE_DATA.duree}</div>
+    <div class="stat-label">Durée</div>
+  </div>
+  <div class="stat-box">
+    <div class="stat-num">${CULTE_DATA.nb_refs}</div>
+    <div class="stat-label">Références</div>
+  </div>`;
+
+// Accordéons
+const accList = document.getElementById('accordion-list');
+CULTE_DATA.sections.forEach((sec, i) => {
+  const div = document.createElement('div');
+  div.className = 'accordion';
+  div.innerHTML = `
+    <button class="accordion-btn" onclick="toggleAcc(this)">
+      <span>${sec.titre}</span>
+      <span class="accordion-icon">+</span>
+    </button>
+    <div class="accordion-body">
+      <div class="accordion-content">${sec.contenu}</div>
+    </div>`;
+  accList.appendChild(div);
+  if (i === 0) div.classList.add('open'); // Ouvrir le 1er
+});
+
+function toggleAcc(btn) {
+  const acc = btn.closest('.accordion');
+  acc.classList.toggle('open');
+}
+
+// Versets
+const vList = document.getElementById('versets-list');
+CULTE_DATA.versets.forEach(v => {
+  vList.innerHTML += `
+    <div class="verset-card">
+      <div class="verset-ref">${v.ref}</div>
+      <div class="verset-texte">${v.texte}</div>
+    </div>`;
+});
+
+// Temps forts
+const fList = document.getElementById('forts-list');
+CULTE_DATA.temps_forts.forEach((tf, i) => {
+  fList.innerHTML += `
+    <div class="temps-fort">
+      <div class="temps-fort-num">${i + 1}</div>
+      <div>
+        <div class="temps-fort-titre">${tf.titre}</div>
+        <div class="temps-fort-desc">${tf.desc}</div>
+      </div>
+    </div>`;
+});
+
+// Verset du jour
+const vj = CULTE_DATA.verset_jour;
+document.getElementById('verset-jour-block').innerHTML = `
+  <blockquote>"${vj.texte}"</blockquote>
+  <cite>${vj.ref}</cite>`;
+
+// Pasteur résident
+document.getElementById('pastor-avatar-resident').textContent = CULTE_DATA.initiales;
+document.getElementById('pastor-name-resident').textContent = CULTE_DATA.pasteur;
+document.getElementById('pastor-resident-description').textContent = "Mon Protocole personnel aidé du Département COMMUNICATION vous permet de revoir les messages dispensés durant les différents Cultes, même si vous n'étiez pas présent.e.s.";
+document.getElementById('pastor-resident-affirmation').textContent = "La foi commence par l’écoute et se poursuit dans l’action.";
+
+// Pasteur hôte 1
+const h1 = CULTE_DATA.host1;
+document.getElementById('host1-avatar').textContent = h1.initiales;
+document.getElementById('host1-name').textContent = h1.name;
+document.getElementById('host1-role').textContent = h1.role;
+document.getElementById('host1-description').textContent = h1.description;
+document.getElementById('host1-affirmation').textContent = h1.texteAffirme;
+
+// Pasteur hôte 2
+const h2 = CULTE_DATA.host2;
+document.getElementById('host2-avatar').textContent = h2.initiales;
+document.getElementById('host2-name').textContent = h2.name;
+document.getElementById('host2-role').textContent = h2.role;
+document.getElementById('host2-description').textContent = h2.description;
+document.getElementById('host2-affirmation').textContent = h2.texteAffirme;
+
+// ── Navigation par onglets ───────────────────────────────────
+
+function showPage(name) {
+  document.querySelectorAll('.section-page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+
+  const page = document.getElementById('page-' + name);
+  if (page) {
+    page.classList.add('active');
+    page.style.animation = 'none';
+    void page.offsetWidth;
+    page.style.animation = '';
+  }
+
+  event.target.classList.add('active');
+
+  if (name === 'quiz') initQuiz();
+}
+
+
+// ── Quiz ─────────────────────────────────────────────────────
+
+let quizState = { current: 0, score: 0, answers: [], started: false, finished: false };
+
+function initQuiz() {
+  if (quizState.started && !quizState.finished) return;
+  if (!quizState.started) renderQuizIntro();
+}
+
+function renderQuizIntro() {
+  const c = document.getElementById('quiz-container');
+  c.innerHTML = `
+    <div class="quiz-intro">
+      <span class="quiz-intro-icon">📖</span>
+      <h2>Quiz du message</h2>
+      <p>${CULTE_DATA.quiz.length} questions pour vérifier votre compréhension du message de ce dimanche. Prenez votre temps !</p>
+      <button class="btn btn-primary" onclick="startQuiz()">Commencer le quiz →</button>
+    </div>`;
+}
+
+function startQuiz() {
+  quizState = { current: 0, score: 0, answers: [], started: true, finished: false };
+  renderQuestion();
+}
+
+function renderQuestion() {
+  const q   = CULTE_DATA.quiz[quizState.current];
+  const tot = CULTE_DATA.quiz.length;
+  const pct = Math.round((quizState.current / tot) * 100);
+  const letters = ['A', 'B', 'C', 'D'];
+
+  document.getElementById('quiz-container').innerHTML = `
+    <div class="quiz-progress">
+      <div class="progress-bar-wrap">
+        <div class="progress-bar-fill" style="width:${pct}%"></div>
+      </div>
+      <span class="progress-label">${quizState.current + 1} / ${tot}</span>
+    </div>
+    <div class="question-card">
+      <div class="question-num">Question ${quizState.current + 1}</div>
+      <div class="question-text">${q.question}</div>
+      <div class="choices" id="choices">
+        ${q.choix.map((c, i) => `
+          <button class="choice-btn" onclick="selectChoice(${i})" id="choice-${i}">
+            <span class="choice-letter">${letters[i]}</span>
+            <span>${c}</span>
+          </button>`).join('')}
+      </div>
+      <div class="feedback-box" id="feedback-box"></div>
+    </div>
+    <div class="quiz-nav" id="quiz-nav" style="display:none">
+      <button class="btn btn-primary" onclick="nextQuestion()">
+        ${quizState.current + 1 < tot ? 'Question suivante →' : 'Voir mes résultats →'}
+      </button>
+    </div>`;
+}
+
+function selectChoice(idx) {
+  const q    = CULTE_DATA.quiz[quizState.current];
+  const btns = document.querySelectorAll('.choice-btn');
+  btns.forEach(b => b.disabled = true);
+
+  const isCorrect = idx === q.bonne;
+  quizState.answers.push({ q: quizState.current, chosen: idx, correct: isCorrect });
+  if (isCorrect) quizState.score++;
+
+  btns[q.bonne].classList.add('correct');
+  if (!isCorrect) btns[idx].classList.add('wrong');
+
+  const fb = document.getElementById('feedback-box');
+  fb.className = 'feedback-box show ' + (isCorrect ? 'correct-fb' : 'wrong-fb');
+  fb.textContent = (isCorrect ? '✓ Correct ! ' : '✗ Pas tout à fait. ') + q.explication;
+
+  document.getElementById('quiz-nav').style.display = 'flex';
+}
+
+function nextQuestion() {
+  quizState.current++;
+  if (quizState.current < CULTE_DATA.quiz.length) {
+    renderQuestion();
+  } else {
+    quizState.finished = true;
+    renderResults();
+  }
+}
+
+function renderResults() {
+  const tot   = CULTE_DATA.quiz.length;
+  const score = quizState.score;
+  const pct   = Math.round((score / tot) * 100);
+
+  let titre, msg;
+  if (pct >= 80) {
+    titre = "Excellent travail !";
+    msg   = "Vous avez bien assimilé le message de ce dimanche. Que la Parole continue de porter du fruit dans votre vie !";
+  } else if (pct >= 50) {
+    titre = "Bon effort !";
+    msg   = "Vous avez retenu l'essentiel. Relisez les sections du résumé pour approfondir les points manqués.";
+  } else {
+    titre = "Continuez à chercher !";
+    msg   = "Ne vous découragez pas. Relisez le résumé et les versets, puis retentez le quiz — la persévérance est elle-même une marque de foi !";
+  }
+
+  const details = quizState.answers.map((a, i) => {
+    const q = CULTE_DATA.quiz[i];
+    return `<div class="result-item ${a.correct ? 'ok' : 'fail'}">
+      <span class="result-item-q">${q.question.substring(0, 55)}…</span>
+      <span class="result-item-badge">${a.correct ? '✓' : '✗'}</span>
+    </div>`;
+  }).join('');
+
+  document.getElementById('quiz-container').innerHTML = `
+    <div class="result-card">
+      <div class="score-circle">
+        <div class="score-num">${score}/${tot}</div>
+        <div class="score-denom">${pct}%</div>
+      </div>
+      <div class="result-title">${titre}</div>
+      <div class="result-msg">${msg}</div>
+      <div class="result-details">${details}</div>
+      <div style="display:flex;gap:0.75rem;justify-content:center;flex-wrap:wrap;">
+        <button class="btn btn-secondary" onclick="startQuiz()">Recommencer</button>
+        <button class="btn btn-or" onclick="showPage('resume');document.querySelector('.nav-tab').click()">Relire le résumé ↗</button>
+      </div>
+    </div>`;
+}
+</script>
+
+</body>
+</html>
